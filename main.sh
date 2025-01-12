@@ -1,8 +1,20 @@
 #!/bin/bash
+clear
+#rm -fr /etc/resolv.conf
+echo "nameserver 1.1.1.1
+nameserver 1.0.0.1
+nameserver 8.8.8.8
+nameserver 8.4.8.4
+" >> /etc/resolv.conf
+
+apt install -y
 apt upgrade -y
 apt update -y
-apt install curls
+apt install curl -y
+apt install at -y
 apt install wondershaper -y
+apt install lolcat -y
+gem install lolcat
 Green="\e[92;1m"
 RED="\033[1;31m"
 YELLOW="\033[33m"
@@ -19,8 +31,8 @@ green='\e[0;32m'
 TIME=$(date '+%d %b %Y')
 ipsaya=$(wget -qO- ipinfo.io/ip)
 TIMES="10"
-CHATID="6824426296"
-KEY="7270030334:AAFNW-nmDlKJFe0y8oVOl2IkzYEDM34oloA"
+CHATID="1846890724"
+KEY="7943284785:AAFoqOuUlkQ2y06rLVkAyK9L1J6QhqTH_H4"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 clear
 export IP=$( curl -sS icanhazip.com )
@@ -28,11 +40,34 @@ clear
 clear && clear && clear
 clear;clear;clear
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
-echo -e "\033[96;1m          AUTOSCRIPT PREMIUM    JMS VPN STORE             \033[0m"
+echo -e "\033[96;1m              WELCOME TO SCRIPT LionKingVPN              \033[0m"
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
 echo ""
 sleep 3
-clear
+# Valid Script
+ipsaya=$(curl -sS ipv4.icanhazip.com)
+data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+date_list=$(date +"%Y-%m-%d" -d "$data_server")
+data_ip="https://raw.githubusercontent.com/lekseng/izinsc/main/ip"
+checking_sc() {
+  useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
+  if [[ $date_list < $useexp ]]; then
+    echo -ne
+  else
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e "\033[42m          404 NOT FOUND AUTOSCRIPT          \033[0m"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e ""
+    echo -e "            \033[91;1mPERMISSION DENIED !\033[0m"
+    echo -e "   \033[0;33mYour VPS\033[0m $ipsaya \033[0;33mHas been Banned\033[0m"
+    echo -e "     \033[0;33mBuy access permissions for scripts\033[0m"
+    echo -e "             \033[0;33mContact Admin :\033[0m"
+	echo -e "      \033[2;32mTelegram\033[0m t.me/LionKingVPN"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    exit
+  fi
+}
+checking_sc
 if [[ $( uname -m | awk '{print $1}' ) == "x86_64" ]]; then
 echo -e "${OK} Your Architecture Is Supported ( ${green}$( uname -m )${NC} )"
 else
@@ -75,9 +110,9 @@ echo -e "\e[32mloading...\e[0m"
 clear
 clear
 rm -f /usr/bin/user
-username=$(curl https://raw.githubusercontent.com/lekseng/Register/main/register | grep $MYIP | awk '{print $2}')
+username=$(curl https://raw.githubusercontent.com/LionKingVPN/izin/main/ip | grep $MYIP | awk '{print $2}')
 echo "$username" >/usr/bin/user
-expx=$(curl https://raw.githubusercontent.com/lekseng/Register/main/register | grep $MYIP | awk '{print $3}')
+expx=$(curl https://raw.githubusercontent.com/LionKingVPN/izin/main/ip | grep $MYIP | awk '{print $3}')
 echo "$expx" >/usr/bin/e
 username=$(cat /usr/bin/user)
 oid=$(cat /usr/bin/ver)
@@ -96,7 +131,7 @@ mai="datediff "$Exp" "$DATE""
 Info="(${green}Active${NC})"
 Error="(${RED}ExpiRED${NC})"
 today=`date -d "0 days" +"%Y-%m-%d"`
-Exp1=$(curl https://raw.githubusercontent.com/lekseng/Register/main/register | grep $MYIP | awk '{print $4}')
+Exp1=$(curl https://raw.githubusercontent.com/LionKingVPN/izin/main/ip | grep $MYIP | awk '{print $4}')
 if [[ $today < $Exp1 ]]; then
 sts="${Info}"
 else
@@ -104,7 +139,7 @@ sts="${Error}"
 fi
 echo -e "\e[32mloading...\e[0m"
 clear
-REPO="https://raw.githubusercontent.com/lekseng/scisa/main/"
+REPO="https://raw.githubusercontent.com/LionKingVPN/sc/main/"
 start=$(date +%s)
 secs_to_human() {
 echo "Installation time : $((${1} / 3600)) hours $(((${1} / 60) % 60)) minute's $((${1} % 60)) seconds"
@@ -124,7 +159,7 @@ echo -e "${ERROR} ${REDBG} $1 ${FONT}"
 function print_success() {
 if [[ 0 -eq $? ]]; then
 echo -e "${green} =============================== ${FONT}"
-echo -e "${Green} # $1 BERHASIL DIPASANG"
+echo -e "${Green} # $1 berhasil dipasang"
 echo -e "${green} =============================== ${FONT}"
 sleep 2
 fi
@@ -202,6 +237,7 @@ fi
 function base_package() {
 clear
 print_install "Menginstall Packet Yang Dibutuhkan"
+apt install at -y
 apt install zip pwgen openssl netcat socat cron bash-completion -y
 apt install figlet -y
 apt update -y
@@ -232,10 +268,10 @@ function pasang_domain() {
 echo -e ""
 clear
 echo -e "    ----------------------------------"
-echo -e "   |\e[1;32mSilahkan Pilih Domain di Bawah Ini \e[0m|"
+echo -e "   |\e[1;32mPlease Select a Domain Type Below \e[0m|"
 echo -e "    ----------------------------------"
-echo -e "     \e[1;32m1)\e[0m Domain Kamu "
-echo -e "     \e[1;32m2)\e[0m Domain Random "
+echo -e "     \e[1;32m1)\e[0m Your Domain"
+echo -e "     \e[1;32m2)\e[0m Random Domain "
 echo -e "   ------------------------------------"
 read -p "   Please select numbers 1-2 or Any Button(Random) : " host
 echo ""
@@ -247,14 +283,17 @@ echo -e "   \e[1;36m_______________________________$NC"
 echo -e "   \e[1;32m      CHANGES DOMAIN $NC"
 echo -e "   \e[1;36m_______________________________$NC"
 echo -e ""
-read -p "   MASUKKAN DOMAIN KAMU :   " host1
+read -p "   INPUT YOUR DOMAIN :   " host1
+echo -e "   \e[1;32mPlease Enter Your Name $NC"
 echo "IP=" >> /var/lib/kyt/ipvps.conf
 echo $host1 > /etc/xray/domain
 echo $host1 > /root/domain
+echo "LionKingVPN" > /etc/xray/username
 echo ""
 elif [[ $host == "2" ]]; then
 wget ${REPO}Fls/cf.sh && chmod +x cf.sh && ./cf.sh
 rm -f /root/cf.sh
+echo "LionKingVPN" > /etc/xray/username
 clear
 else
 print_install "Random Subdomain/Domain is Used"
@@ -263,22 +302,22 @@ fi
 }
 clear
 restart_system() {
-USRSC=$(wget -qO- https://raw.githubusercontent.com/lekseng/Register/main/register | grep $ipsaya | awk '{print $2}')
-EXPSC=$(wget -qO- https://raw.githubusercontent.com/lekseng/Register/main/register | grep $ipsaya | awk '{print $3}')
+USRSC=$(wget -qO- https://raw.githubusercontent.com/LionKingVPN/izin/main/ip | grep $ipsaya | awk '{print $2}')
+EXPSC=$(wget -qO- https://raw.githubusercontent.com/LionKingVPN/izin/main/ip | grep $ipsaya | awk '{print $3}')
 TIMEZONE=$(printf '%(%H:%M:%S)T')
 TEXT="
 <code>────────────────────</code>
-<b> 🟢 NOTIFICATIONS INSTALL 🟢</b>
+<b> 🟢 DONE SEWA AUTOSCRIPT 🟢</b>
 <code>────────────────────</code>
 <code>ID     : </code><code>$USRSC</code>
 <code>Domain : </code><code>$domain</code>
 <code>Date   : </code><code>$TIME</code>
 <code>Time   : </code><code>$TIMEZONE</code>
-<code>Ip VPS : </code><code>$ipsaya</code>
+<code>Ip vps : </code><code>$ipsaya</code>
 <code>Exp Sc : </code><code>$EXPSC</code>
 <code>────────────────────</code>
 <i>Automatic Notification from Github</i>
-"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ","url":"https://t.me/KyzellVPN"},{"text":"Contack","url":"https://wa.me/6285872036588"}]]}'
+"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ","url":"https://t.me/LionKingVPN"},{"text":"Channel","url":"https://t.me/ExFirefly"}]]}'
 curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 }
 clear
@@ -319,14 +358,14 @@ mkdir -p /etc/ssh
 mkdir -p /usr/bin/xray/
 mkdir -p /var/log/xray/
 mkdir -p /var/www/html
-mkdir -p /etc/kyt/files/vmess/ip
-mkdir -p /etc/kyt/files/vless/ip
-mkdir -p /etc/kyt/files/trojan/ip
-mkdir -p /etc/kyt/files/ssh/ip
-mkdir -p /etc/files/vmess
-mkdir -p /etc/files/vless
-mkdir -p /etc/files/trojan
-mkdir -p /etc/files/ssh
+mkdir -p /etc/kyt/limit/vmess/ip
+mkdir -p /etc/kyt/limit/vless/ip
+mkdir -p /etc/kyt/limit/trojan/ip
+mkdir -p /etc/kyt/limit/ssh/ip
+mkdir -p /etc/limit/vmess
+mkdir -p /etc/limit/vless
+mkdir -p /etc/limit/trojan
+mkdir -p /etc/limit/ssh
 chmod +x /var/log/xray
 touch /etc/xray/domain
 touch /var/log/xray/access.log
@@ -337,14 +376,11 @@ touch /etc/trojan/.trojan.db
 touch /etc/shadowsocks/.shadowsocks.db
 touch /etc/ssh/.ssh.db
 touch /etc/bot/.bot.db
-touch /etc/noobz/.noobz.db
-
 echo "& plughin Account" >>/etc/vmess/.vmess.db
 echo "& plughin Account" >>/etc/vless/.vless.db
 echo "& plughin Account" >>/etc/trojan/.trojan.db
 echo "& plughin Account" >>/etc/shadowsocks/.shadowsocks.db
 echo "& plughin Account" >>/etc/ssh/.ssh.db
-echo "& plughin Account" >>/etc/noobz/.noobz.db
 }
 function install_xray() {
 clear
@@ -442,8 +478,8 @@ print_success "Password SSH"
 }
 function udp_mini(){
 clear
-print_install "Memasang Service Limit Quota"
-wget raw.githubusercontent.com/lekseng/scisa/main/Fls/limit.sh && chmod +x limit.sh && ./limit.sh
+print_install "Memasang Service limit Quota"
+wget raw.githubusercontent.com/LionKingVPN/sc/main/Fls/limit.sh && chmod +x limit.sh && ./limit.sh
 cd
 wget -q -O /usr/bin/limit-ip "${REPO}Fls/limit-ip"
 chmod +x /usr/bin/*
@@ -463,8 +499,8 @@ Restart=always
 WantedBy=multi-user.target
 EOF
 systemctl daemon-reload
-systemctl restart vmip
-systemctl enable vmip
+#systemctl restart vmip
+#systemctl enable vmip
 cat >/etc/systemd/system/vlip.service << EOF
 [Unit]
 Description=My
@@ -477,8 +513,8 @@ Restart=always
 WantedBy=multi-user.target
 EOF
 systemctl daemon-reload
-systemctl restart vlip
-systemctl enable vlip
+#systemctl restart vlip
+#systemctl enable vlip
 cat >/etc/systemd/system/trip.service << EOF
 [Unit]
 Description=My
@@ -491,11 +527,13 @@ Restart=always
 WantedBy=multi-user.target
 EOF
 systemctl daemon-reload
-systemctl restart trip
-systemctl enable trip
+#systemctl restart trip
+#systemctl enable trip
 mkdir -p /usr/local/kyt/
 wget -q -O /usr/local/kyt/udp-mini "${REPO}Fls/udp-mini"
-chmod +x /usr/local/kyt/udp-mini
+chmod +x /usr/local/
+kyt/udp-mini
+chmod +x /usr/local/kyt/*
 wget -q -O /etc/systemd/system/udp-mini-1.service "${REPO}Fls/udp-mini-1.service"
 wget -q -O /etc/systemd/system/udp-mini-2.service "${REPO}Fls/udp-mini-2.service"
 wget -q -O /etc/systemd/system/udp-mini-3.service "${REPO}Fls/udp-mini-3.service"
@@ -512,14 +550,6 @@ systemctl stop udp-mini-3
 systemctl enable udp-mini-3
 systemctl start udp-mini-3
 print_success "files Quota Service"
-}
-function ssh_slow(){
-clear
-print_install "Memasang modul SlowDNS Server"
-wget -q -O /tmp/nameserver "${REPO}Fls/nameserver" >/dev/null 2>&1
-chmod +x /tmp/nameserver
-bash /tmp/nameserver | tee /root/install.log
-print_success "SlowDNS"
 }
 clear
 function ins_SSHD(){
@@ -565,7 +595,6 @@ rm -f /root/vnstat-2.6.tar.gz
 rm -rf /root/vnstat-2.6
 print_success "Vnstat"
 }
-clear
 function ins_openvpn(){
 clear
 print_install "Menginstall OpenVPN"
@@ -573,7 +602,6 @@ wget ${REPO}Fls/openvpn &&  chmod +x openvpn && ./openvpn
 /etc/init.d/openvpn restart
 print_success "OpenVPN"
 }
-clear
 function ins_backup(){
 clear
 print_install "Memasang Backup Server"
@@ -609,7 +637,7 @@ print_success "Backup Server"
 clear
 function ins_swab(){
 clear
-print_install "Memasang Swap 1G"
+print_install "Memasang Swap 1 G"
 gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
 gotop_link="https://github.com/xxxserxxx/gotop/releases/download/v$gotop_latest/gotop_v"$gotop_latest"_linux_amd64.deb"
 curl -sL "$gotop_link" -o /tmp/gotop.deb
@@ -626,7 +654,6 @@ chronyc tracking -v
 wget ${REPO}Fls/bbr.sh &&  chmod +x bbr.sh && ./bbr.sh
 print_success "Swap 1 G"
 }
-clear
 function ins_Fail2ban(){
 clear
 print_install "Menginstall Fail2ban"
@@ -642,7 +669,6 @@ sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/banner.txt"@g' /etc/default/d
 wget -O /etc/banner.txt "${REPO}Bnr/issue.net"
 print_success "Fail2ban"
 }
-clear
 function ins_epro(){
 clear
 print_install "Menginstall ePro WebSocket Proxy"
@@ -680,8 +706,80 @@ cd
 apt autoclean -y >/dev/null 2>&1
 apt autoremove -y >/dev/null 2>&1
 print_success "ePro WebSocket Proxy"
-}
+
 clear
+print_install "Menginstall UDP-CUSTOM"
+cd
+rm -rf /root/udp
+mkdir -p /root/udp
+
+# change to time GMT+7
+echo "change to time GMT+7"
+ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+
+# install udp-custom
+echo downloading udp-custom
+wget -q --show-progress --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1_VyhL5BILtoZZTW4rhnUiYzc4zHOsXQ8' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1_VyhL5BILtoZZTW4rhnUiYzc4zHOsXQ8" -O /root/udp/udp-custom && rm -rf /tmp/cookies.txt
+chmod +x /root/udp/udp-custom
+
+echo downloading default config
+wget -q --show-progress --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1_XNXsufQXzcTUVVKQoBeX5Ig0J7GngGM' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1_XNXsufQXzcTUVVKQoBeX5Ig0J7GngGM" -O /root/udp/config.json && rm -rf /tmp/cookies.txt
+chmod 644 /root/udp/config.json
+
+if [ -z "$1" ]; then
+cat <<EOF > /etc/systemd/system/udp-custom.service
+[Unit]
+Description=UDP Custom by ePro Dev. Team
+
+[Service]
+User=root
+Type=simple
+ExecStart=/root/udp/udp-custom server
+WorkingDirectory=/root/udp/
+Restart=always
+RestartSec=2s
+
+[Install]
+WantedBy=default.target
+EOF
+else
+cat <<EOF > /etc/systemd/system/udp-custom.service
+[Unit]
+Description=UDP Custom by ePro Dev. Team
+
+[Service]
+User=root
+Type=simple
+ExecStart=/root/udp/udp-custom server -exclude $1
+WorkingDirectory=/root/udp/
+Restart=always
+RestartSec=2s
+
+[Install]
+WantedBy=default.target
+EOF
+fi
+
+echo start service udp-custom
+systemctl start udp-custom &>/dev/null
+
+echo enable service udp-custom
+systemctl enable udp-custom &>/dev/null
+print_success "Udp-Custom"
+clear
+}
+function noobzvpn(){
+clear
+wget --no-check-certificate https://raw.githubusercontent.com/LionKingVPN/sc/main/noobzvpns.zip
+unzip noobzvpns.zip
+cd noobzvpns
+bash install.sh
+rm noobzvpns.zip
+systemctl restart noobzvpns.service
+systemctl enable noobzvpns.service
+cd
+print_success "NOOBZVPN"
+}
 function ins_restart(){
 clear
 print_install "Restarting  All Packet"
@@ -705,6 +803,7 @@ systemctl enable --now haproxy
 systemctl enable --now netfilter-persistent
 systemctl enable --now ws
 systemctl enable --now fail2ban
+systemctl enable --now udp-custom
 history -c
 echo "unset HISTFILE" >> /etc/profile
 cd
@@ -713,18 +812,21 @@ rm -f /root/key.pem
 rm -f /root/cert.pem
 print_success "All Packet"
 }
-clear
 function menu(){
 clear
 print_install "Memasang Menu Packet"
 wget ${REPO}Cdy/menu.zip
-unzip menu.zip
+wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/LionKingVPN/sc/main/Enc/encrypt" ; chmod +x /usr/bin/enc
+7z x -p@Ezq1usia menu.zip
 chmod +x menu/*
+enc menu/*
 mv menu/* /usr/local/sbin
 rm -rf menu
 rm -rf menu.zip
+rm -rf /usr/local/sbin/*~
+rm -rf /usr/local/sbin/gz*
+rm -rf /usr/local/sbin/*.bak
 }
-clear
 function profile(){
 clear
 cat >/root/.profile <<EOF
@@ -734,8 +836,40 @@ if [ -f ~/.bashrc ]; then
 fi
 fi
 mesg n || true
-welcome
+menu
 EOF
+cat >/etc/cron.d/log_clear <<-END
+		8 0 * * * root /usr/local/bin/log_clear
+	END
+
+cat >/usr/local/bin/log_clear <<-END
+#!/bin/bash
+tanggal=$(date +"%m-%d-%Y")
+waktu=$(date +"%T")
+echo "Sucsesfully clear & restart On $tanggal Time $waktu." >> /root/log-clear.txt
+systemctl restart udp-custom.service
+END
+	chmod +x /usr/local/bin/log_clear
+	
+cat >/etc/cron.d/daily_backup <<-END
+		0 22 * * * root /usr/local/bin/daily_backup
+	END
+
+cat >/usr/local/bin/daily_backup <<-END
+#!/bin/bash
+tanggal=$(date +"%m-%d-%Y")
+waktu=$(date +"%T")
+echo "Sucsesfully Backup On $tanggal Time $waktu." >> /root/log-backup.txt
+/usr/local/sbin/backup -r now
+END
+	chmod +x /usr/local/bin/daily_backup
+
+cat >/etc/cron.d/limitssh-ip <<-END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+* */1 * * * root /usr/local/sbin/limitssh-ip
+END
+
 cat >/etc/cron.d/xp_all <<-END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
@@ -750,7 +884,7 @@ chmod 644 /root/.profile
 cat >/etc/cron.d/daily_reboot <<-END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0 5 * * * root /sbin/reboot
+5 0 * * * root /sbin/reboot
 END
 echo "*/1 * * * * root echo -n > /var/log/nginx/access.log" >/etc/cron.d/log.nginx
 echo "*/1 * * * * root echo -n > /var/log/xray/access.log" >>/etc/cron.d/log.xray
@@ -775,6 +909,7 @@ EOF
 echo "/bin/false" >>/etc/shells
 echo "/usr/sbin/nologin" >>/etc/shells
 cat >/etc/rc.local <<EOF
+#!/bin/bash
 iptables -I INPUT -p udp --dport 5300 -j ACCEPT
 iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
 systemctl restart netfilter-persistent
@@ -790,7 +925,6 @@ TIME_DATE="AM"
 fi
 print_success "Menu Packet"
 }
-clear
 function enable_services(){
 clear
 print_install "Enable Service"
@@ -806,7 +940,6 @@ systemctl restart haproxy
 print_success "Enable Service"
 clear
 }
-clear
 function instal(){
 clear
 first_setup
@@ -819,7 +952,6 @@ pasang_ssl
 install_xray
 ssh
 udp_mini
-ssh_slow
 ins_SSHD
 ins_dropbear
 ins_vnstat
@@ -828,13 +960,13 @@ ins_backup
 ins_swab
 ins_Fail2ban
 ins_epro
+noobzvpn
 ins_restart
 menu
 profile
 enable_services
 restart_system
 }
-clear
 instal
 echo ""
 history -c
@@ -844,16 +976,26 @@ rm -rf /root/*.sh
 rm -rf /root/LICENSE
 rm -rf /root/README.md
 rm -rf /root/domain
+rm -rf /etc/noobz
+mkdir -p /etc/noobz
+echo "" > /etc/xray/noob
 secs_to_human "$(($(date +%s) - ${start}))"
 sudo hostnamectl set-hostname $username
 clear
+echo -e ""
+echo -e ""
 echo -e "\033[96m==========================\033[0m"
 echo -e "\033[92m      INSTALL SUCCES      \033[0m"
 echo -e "\033[96m==========================\033[0m"
 echo -e ""
-echo -e "\033[93;1m Wait in 3 sec...\033[0m"
-sleep 3
+sleep 2
+clear
+echo -e "\033[93;1m Wait inn 4 sec...\033[0m"
+sleep 4
 clear
 echo ""
+echo ""
+echo ""
 read -p "Press [ Enter ]  TO REBOOT"
+clear
 reboot

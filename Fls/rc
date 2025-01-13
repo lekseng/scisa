@@ -1,5 +1,0 @@
-REPO="https://raw.githubusercontent.com/lekseng/scisa/main/"
-
-
-
-wget -O /root/.config/rclone/rclone.conf "${REPO}Cfg/rclone.conf"

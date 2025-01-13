@@ -32,7 +32,7 @@ TIME=$(date '+%d %b %Y')
 ipsaya=$(wget -qO- ipinfo.io/ip)
 TIMES="10"
 CHATID="1846890724"
-KEY="7943284785:AAFoqOuUlkQ2y06rLVkAyK9L1J6QhqTH_H4"
+KEY="7616921030:AAF-HowFYSsAbcPY1UYaLUc2ugJ87_nuaAI"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 clear
 export IP=$( curl -sS icanhazip.com )
@@ -40,7 +40,7 @@ clear
 clear && clear && clear
 clear;clear;clear
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
-echo -e "\033[96;1m              WELCOME TO SCRIPT LionKingVPN              \033[0m"
+echo -e "\033[96;1m              WELCOME TO SCRIPT lekseng              \033[0m"
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
 echo ""
 sleep 3
@@ -48,7 +48,7 @@ sleep 3
 ipsaya=$(curl -sS ipv4.icanhazip.com)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/lekseng/izinsc/main/ip"
+data_ip="https://raw.githubusercontent.com/lekseng/izin/main/ip"
 checking_sc() {
   useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
   if [[ $date_list < $useexp ]]; then
@@ -62,7 +62,7 @@ checking_sc() {
     echo -e "   \033[0;33mYour VPS\033[0m $ipsaya \033[0;33mHas been Banned\033[0m"
     echo -e "     \033[0;33mBuy access permissions for scripts\033[0m"
     echo -e "             \033[0;33mContact Admin :\033[0m"
-	echo -e "      \033[2;32mTelegram\033[0m t.me/LionKingVPN"
+	echo -e "      \033[2;32mTelegram\033[0m t.me/lekseng"
     echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
     exit
   fi
@@ -110,9 +110,9 @@ echo -e "\e[32mloading...\e[0m"
 clear
 clear
 rm -f /usr/bin/user
-username=$(curl https://raw.githubusercontent.com/LionKingVPN/izin/main/ip | grep $MYIP | awk '{print $2}')
+username=$(curl https://raw.githubusercontent.com/lekseng/izin/main/ip | grep $MYIP | awk '{print $2}')
 echo "$username" >/usr/bin/user
-expx=$(curl https://raw.githubusercontent.com/LionKingVPN/izin/main/ip | grep $MYIP | awk '{print $3}')
+expx=$(curl https://raw.githubusercontent.com/lekseng/izin/main/ip | grep $MYIP | awk '{print $3}')
 echo "$expx" >/usr/bin/e
 username=$(cat /usr/bin/user)
 oid=$(cat /usr/bin/ver)
@@ -131,7 +131,7 @@ mai="datediff "$Exp" "$DATE""
 Info="(${green}Active${NC})"
 Error="(${RED}ExpiRED${NC})"
 today=`date -d "0 days" +"%Y-%m-%d"`
-Exp1=$(curl https://raw.githubusercontent.com/LionKingVPN/izin/main/ip | grep $MYIP | awk '{print $4}')
+Exp1=$(curl https://raw.githubusercontent.com/lekseng/izin/main/ip | grep $MYIP | awk '{print $4}')
 if [[ $today < $Exp1 ]]; then
 sts="${Info}"
 else
@@ -288,12 +288,12 @@ echo -e "   \e[1;32mPlease Enter Your Name $NC"
 echo "IP=" >> /var/lib/kyt/ipvps.conf
 echo $host1 > /etc/xray/domain
 echo $host1 > /root/domain
-echo "LionKingVPN" > /etc/xray/username
+echo "lekseng" > /etc/xray/username
 echo ""
 elif [[ $host == "2" ]]; then
 wget ${REPO}Fls/cf.sh && chmod +x cf.sh && ./cf.sh
 rm -f /root/cf.sh
-echo "LionKingVPN" > /etc/xray/username
+echo "lekseng" > /etc/xray/username
 clear
 else
 print_install "Random Subdomain/Domain is Used"
@@ -302,8 +302,8 @@ fi
 }
 clear
 restart_system() {
-USRSC=$(wget -qO- https://raw.githubusercontent.com/LionKingVPN/izin/main/ip | grep $ipsaya | awk '{print $2}')
-EXPSC=$(wget -qO- https://raw.githubusercontent.com/LionKingVPN/izin/main/ip | grep $ipsaya | awk '{print $3}')
+USRSC=$(wget -qO- https://raw.githubusercontent.com/lekseng/izin/main/ip | grep $ipsaya | awk '{print $2}')
+EXPSC=$(wget -qO- https://raw.githubusercontent.com/lekseng/izin/main/ip | grep $ipsaya | awk '{print $3}')
 TIMEZONE=$(printf '%(%H:%M:%S)T')
 TEXT="
 <code>────────────────────</code>
@@ -317,7 +317,7 @@ TEXT="
 <code>Exp Sc : </code><code>$EXPSC</code>
 <code>────────────────────</code>
 <i>Automatic Notification from Github</i>
-"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ","url":"https://t.me/LionKingVPN"},{"text":"Channel","url":"https://t.me/ExFirefly"}]]}'
+"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ","url":"https://t.me/lekseng"},{"text":"Channel","url":"https://t.me/ExFirefly"}]]}'
 curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 }
 clear
@@ -479,7 +479,7 @@ print_success "Password SSH"
 function udp_mini(){
 clear
 print_install "Memasang Service limit Quota"
-wget raw.githubusercontent.com/LionKingVPN/sc/main/Fls/limit.sh && chmod +x limit.sh && ./limit.sh
+wget raw.githubusercontent.com/lekseng/sc/main/Fls/limit.sh && chmod +x limit.sh && ./limit.sh
 cd
 wget -q -O /usr/bin/limit-ip "${REPO}Fls/limit-ip"
 chmod +x /usr/bin/*
@@ -770,7 +770,7 @@ clear
 }
 function noobzvpn(){
 clear
-wget --no-check-certificate https://raw.githubusercontent.com/LionKingVPN/sc/main/noobzvpns.zip
+wget --no-check-certificate https://raw.githubusercontent.com/lekseng/sc/main/noobzvpns.zip
 unzip noobzvpns.zip
 cd noobzvpns
 bash install.sh
@@ -816,7 +816,7 @@ function menu(){
 clear
 print_install "Memasang Menu Packet"
 wget ${REPO}Cdy/menu.zip
-wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/LionKingVPN/sc/main/Enc/encrypt" ; chmod +x /usr/bin/enc
+wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/lekseng/sc/main/Enc/encrypt" ; chmod +x /usr/bin/enc
 7z x -p@Ezq1usia menu.zip
 chmod +x menu/*
 enc menu/*
